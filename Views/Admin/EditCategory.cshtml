@@ -1,0 +1,181 @@
+@model MenuShop.Models.Category
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-edit me-2"></i>Edit Category
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" name="RemoveImage" id="RemoveImage" value="false" />
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label asp-for="Name" class="form-label">
+                                        <i class="fas fa-tag me-1"></i>Category Name <span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="Name" class="form-control" placeholder="Enter category name">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Description" class="form-label">
+                                        <i class="fas fa-info-circle me-1"></i>Description
+                                    </label>
+                                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter category description"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-image me-1"></i>Category Image
+                                    </label>
+                                    <div class="image-upload-square" id="categoryImageBox" style="cursor: pointer;">
+                                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                                        {
+                                            <img id="categoryImg" src="@Model.ImageUrl" class="uploaded-image" style="display: block;">
+                                            <button type="button" class="btn btn-sm btn-danger remove-image" onclick="removeCategoryImage()">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        }
+                                        <div id="imagePreview" style="display: none;">
+                                            <img id="previewImg" class="uploaded-image" style="display: block;">
+                                            <button type="button" class="btn btn-sm btn-danger remove-image" onclick="removeCategoryImage()">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                        <div id="imagePlaceholder" class="upload-placeholder" @(string.IsNullOrEmpty(Model.ImageUrl) ? "" : "style='display: none;'")>
+                                            <i class="fas fa-plus fa-2x mb-2"></i>
+                                            <div>Add new image</div>
+                                        </div>
+                                        <input type="file" name="imageFile" id="imageFile" class="form-control mt-3" accept="image/*" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Save Changes
+                            </button>
+                            <a href="@Url.Action("Categories", "Admin")" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const imageFileInput = document.getElementById('imageFile');
+        const preview = document.getElementById('imagePreview');
+        const placeholder = document.getElementById('imagePlaceholder');
+        const previewImg = document.getElementById('previewImg');
+        const categoryImg = document.getElementById('categoryImg');
+
+        imageFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    preview.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    if (categoryImg) categoryImg.style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+                placeholder.style.display = 'flex';
+                if (categoryImg) categoryImg.style.display = 'block';
+            }
+        });
+        window.removeCategoryImage = function() {
+            if (categoryImg) categoryImg.style.display = 'none';
+            preview.style.display = 'none';
+            placeholder.style.display = 'flex';
+            imageFileInput.value = '';
+            document.getElementById('RemoveImage').value = 'true';
+        }
+
+        document.getElementById('categoryImageBox').addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-image') || e.target.closest('.remove-image')) return;
+            imageFileInput.click();
+        });
+    </script>
+}
+
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .card-header {
+        border-radius: 15px 15px 0 0 !important;
+    }
+    
+    .form-control {
+        border-radius: 8px;
+        border: 2px solid #e9ecef;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .btn {
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .image-upload-square {
+        width: 180px;
+        height: 180px;
+        border: 2px dashed #ccc;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #fafbfc;
+        position: relative;
+        margin: 0 auto;
+        transition: border-color 0.2s;
+    }
+    .image-upload-square:hover {
+        border-color: #0d6efd;
+    }
+    .image-upload-square .upload-placeholder {
+        text-align: center;
+        color: #888;
+    }
+    .image-upload-square .uploaded-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+    .image-upload-square .remove-image {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 10;
+    }
+</style> 

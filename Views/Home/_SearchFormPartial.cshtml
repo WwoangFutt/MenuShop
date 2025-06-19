@@ -1,0 +1,113 @@
+@* Partial view: Search form for topbar *@
+<form method="get" class="search-form search-pill d-flex align-items-center flex-grow-1 justify-content-center" style="max-width:600px; margin:0 auto; position:relative;">
+    <div class="input-group pill-group w-100 align-items-center">
+        <input type="text" class="form-control search-pill-input" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Search" autocomplete="off">
+        <button class="btn search-pill-btn" type="submit" tabindex="-1" style="border:none; background:transparent;">
+            <i class="fas fa-search"></i>
+        </button>
+        <button class="btn search-pill-mic" type="button" tabindex="-1" style="border:none; background:transparent;">
+            <i class="fas fa-microphone"></i>
+        </button>
+    </div>
+</form>
+<div class="mic-status" id="micStatus" style="display:none; position:absolute; top:52px; left:50%; transform:translateX(-50%); background:#222; color:#fff; padding:6px 18px; border-radius:20px; font-size:1rem; z-index:9999; opacity:0.95;">
+    <i class="fas fa-microphone"></i> Listening...
+</div>
+<style>
+.search-pill {
+  width: 100%;
+}
+.pill-group {
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: none;
+  padding: 0 8px;
+  height: 44px;
+}
+.search-pill-input {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  box-shadow: none !important;
+  outline: none !important;
+  padding-left: 16px;
+  padding-right: 0;
+  font-size: 1.1rem;
+  height: 42px;
+}
+.search-pill-input:focus {
+  border: none;
+  box-shadow: none;
+}
+.search-pill-btn, .search-pill-mic {
+  color: #555;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.search-pill-btn:hover, .search-pill-mic:hover {
+  background: #f2f2f2;
+}
+.search-lang-select {
+  border-radius: 999px;
+  margin-left: 8px;
+  padding: 0 8px;
+  height: 32px;
+  background: #f8f8f8;
+  color: #333;
+  min-width: 90px;
+  max-width: 120px;
+  font-size: 1rem;
+}
+.search-lang-select:focus {
+  outline: none;
+  box-shadow: none;
+}
+</style>
+<script>
+const micBtn = document.querySelector('.search-pill-mic');
+const searchInput = document.querySelector('.search-pill-input');
+const searchForm = document.querySelector('.search-form');
+const micStatus = document.getElementById('micStatus');
+let recognition;
+const appLang = localStorage.getItem('appLang') || 'vi-VN';
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = appLang;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    micBtn.addEventListener('click', function() {
+        recognition.lang = appLang;
+        recognition.start();
+        micBtn.classList.add('active');
+        micStatus.style.display = 'block';
+    });
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        searchInput.value = transcript;
+        micBtn.classList.remove('active');
+        micStatus.style.display = 'none';
+        searchForm.submit();
+    };
+    recognition.onerror = function(event) {
+        micBtn.classList.remove('active');
+        micStatus.style.display = 'none';
+        alert('Voice not recognized or error: ' + (event.error || 'Unknown error'));
+    };
+    recognition.onend = function() {
+        micBtn.classList.remove('active');
+        micStatus.style.display = 'none';
+    };
+} else {
+    micBtn.addEventListener('click', function() {
+        alert('Your browser does not support voice recognition!');
+    });
+}
+</script> 

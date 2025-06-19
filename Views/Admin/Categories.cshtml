@@ -1,0 +1,113 @@
+@model IEnumerable<MenuShop.Models.Category>
+@{
+    ViewData["Title"] = "Category Management";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><i class="fas fa-tags me-2"></i>Category Management</h2>
+                <a href="@Url.Action("CreateCategory", "Admin")" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Add New Category
+                </a>
+            </div>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle fa-2x mb-3"></i>
+                    <h5>No Category</h5>
+                    <p>Create the first category to get started</p>
+                    <a href="@Url.Action("CreateCategory", "Admin")" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Create Category
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var category in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                @if (!string.IsNullOrEmpty(category.ImageUrl))
+                                {
+                                    <img src="@category.ImageUrl" class="rounded me-3" alt="@category.Name" style="width: 60px; height: 60px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-box fa-2x text-muted"></i>
+                                    </div>
+                                }
+                                <div>
+                                    <h5 class="card-title mb-1">@category.Name</h5>
+                                    <small class="text-muted">
+                                        <i class="fas fa-box me-1"></i>@category.Products.Count Products
+                                    </small>
+                                </div>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(category.Description))
+                            {
+                                <p class="card-text text-muted small">@category.Description</p>
+                            }
+
+                            <div class="row text-center mb-3">
+                                <div class="col-6">
+                                    <small class="text-muted">CreatedAt</small><br>
+                                    <span class="fw-bold">@category.CreatedAt.ToString("dd/MM/yyyy")</span>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted">UpdatedAt</small><br>
+                                    <span class="fw-bold">@category.UpdatedAt.ToString("dd/MM/yyyy")</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <a href="@Url.Action("EditCategory", "Admin", new { id = category.Id })" class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </a>
+                                <form method="post" action="@Url.Action("DeleteCategory", "Admin")" class="flex-fill" 
+                                      onsubmit="return confirm('AreYouSure')">
+                                    <input type="hidden" name="id" value="@category.Id" />
+                                    <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                                        <i class="fas fa-trash me-1"></i>Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .card {
+        border: none;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    
+    .btn {
+        border-radius: 8px;
+        font-weight: 600;
+    }
+</style> 

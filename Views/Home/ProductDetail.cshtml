@@ -1,0 +1,352 @@
+@model MenuShop.Models.Product
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Category" asp-route-id="@Model.CategoryId">@Model.Category?.Name</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Product Images/Videos Gallery -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body p-0">
+                    <!-- Main Image/Video Display -->
+                    <div id="mainDisplay" class="position-relative">
+                        <img id="mainImage"
+                             src="@(Model.Images?.FirstOrDefault()?.ImageUrl ?? Model.ImageUrl ?? "")"
+                             class="img-fluid w-100"
+                             alt="@Model.Name"
+                             style="max-height: 400px; object-fit: cover; @( (!string.IsNullOrEmpty(Model.VideoUrl) && (Model.Images == null || !Model.Images.Any())) ? "display:none;" : "" )" />
+
+                        <video id="mainVideo"
+                               class="img-fluid w-100"
+                               controls
+                               style="max-height: 400px; object-fit: cover; @(string.IsNullOrEmpty(Model.VideoUrl) ? "display:none;" : (Model.Images != null && Model.Images.Any() ? "display:none;" : ""))">
+                            <source src="@Model.VideoUrl" type="video/mp4">
+                            Your browser does not support video.
+                        </video>
+
+                        @if (string.IsNullOrEmpty(Model.VideoUrl) && (Model.Images == null || !Model.Images.Any()) && string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 400px;">
+                                <i class="fas fa-image fa-4x text-muted"></i>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Thumbnail Gallery -->
+                    @if ((Model.Images != null && Model.Images.Any()) || !string.IsNullOrEmpty(Model.VideoUrl))
+                    {
+                        <div class="row g-2" id="thumbnailGallery">
+                            @if (Model.Images != null && Model.Images.Any())
+                            {
+                                foreach (var image in Model.Images)
+                                {
+                                    <div class="col-2">
+                                        <div class="thumbnail-item" data-type="image" data-src="@image.ImageUrl">
+                                            <img src="@image.ImageUrl"
+                                                 class="img-fluid rounded"
+                                                 alt="@Model.Name"
+                                                 style="width: 100%; height: 60px; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            @if (!string.IsNullOrEmpty(Model.VideoUrl))
+                            {
+                                <div class="col-2">
+                                    <div class="thumbnail-item" data-type="video" data-src="@Model.VideoUrl">
+                                        <div class="thumbnail-video">
+                                            <i class="fas fa-play text-white"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Information -->
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title mb-3">@Model.Name</h2>
+                    
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-2">@Model.Category?.Name</span>
+                        <span class="badge bg-@(Model.IsActive ? "success" : "danger")">
+                            @(Model.IsActive ? "In stock" : "Out of stock")
+                        </span>
+                    </div>
+
+                    <div class="mb-4">
+                        @if (Model.IsDiscountActive)
+                        {
+                            <div>
+                                <h3 class="text-decoration-line-through text-muted">@Model.Price.ToString("N0") ₫</h3>
+                                <h3 class="text-danger fw-bold">@Model.FinalPrice.ToString("N0") ₫</h3>
+                                <span class="badge bg-danger fs-6">Discount @Model.DiscountPercent%</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <h3 class="text-primary fw-bold">@Model.Price.ToString("N0") ₫</h3>
+                        }
+                        <small class="text-muted">
+                            <i class="fas fa-box me-1"></i>Stock left: @Model.Stock
+                        </small>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <div class="mb-4">
+                            <h5><i class="fas fa-info-circle me-2"></i>Description</h5>
+                            <p class="text-muted">@Model.Description</p>
+                        </div>
+                    }
+
+                    <div class="mb-4">
+                        <h5><i class="fas fa-clock me-2"></i>Information</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="text-muted">Created at:</small><br>
+                                <span>@Model.CreatedAt.ToString("dd/MM/yyyy")</span>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Updated at:</small><br>
+                                <span>@Model.UpdatedAt.ToString("dd/MM/yyyy")</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        @if (Model.IsActive && Model.Stock > 0)
+                        {
+                            <button class="btn btn-primary btn-lg" disabled>
+                                <i class="fas fa-shopping-cart me-2"></i>Add to cart
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-secondary btn-lg" disabled>
+                                <i class="fas fa-times me-2"></i>Out of stock
+                            </button>
+                        }
+                        <button type="button" class="btn btn-outline-success btn-lg" onclick="shareProduct(window.location.href, '@Model.Name')">
+                            <i class="fas fa-share-alt me-1"></i>Share
+                        </button>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Back
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    @if (Model.Category?.Products?.Any() == true)
+    {
+        <div class="row mt-5">
+            <div class="col-12">
+                <h4 class="mb-4">
+                    <i class="fas fa-thumbs-up me-2"></i>Related products
+                </h4>
+                <div class="row">
+                    @foreach (var relatedProduct in Model.Category.Products.Where(p => p.Id != Model.Id && p.IsActive).Take(4))
+                    {
+                        <div class="col-6 col-md-3 mb-3">
+                            <div class="card h-100">
+                                @if (!string.IsNullOrEmpty(relatedProduct.ImageUrl))
+                                {
+                                    <img src="@relatedProduct.ImageUrl" class="card-img-top" alt="@relatedProduct.Name" style="height: 150px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 150px;">
+                                        <i class="fas fa-image fa-2x text-muted"></i>
+                                    </div>
+                                }
+                                <div class="card-body">
+                                    <h6 class="card-title">@relatedProduct.Name</h6>
+                                    @if (relatedProduct.IsDiscountActive)
+                                    {
+                                        <div class="mb-2">
+                                            <span class="text-decoration-line-through text-muted small">@relatedProduct.Price.ToString("N0") ₫</span><br>
+                                            <span class="text-danger fw-bold">@relatedProduct.FinalPrice.ToString("N0") ₫</span>
+                                            <span class="badge bg-danger ms-1">-@relatedProduct.DiscountPercent%</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-primary fw-bold mb-2">@relatedProduct.Price.ToString("N0") ₫</p>
+                                    }
+                                    <a href="@Url.Action("ProductDetail", "Home", new { id = relatedProduct.Id })" class="btn btn-outline-primary btn-sm w-100">
+                                        <i class="fas fa-eye me-1"></i>View details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .card {
+        border: none;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 15px;
+    }
+    
+    .card:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        transition: box-shadow 0.3s ease;
+    }
+    
+    .btn {
+        border-radius: 10px;
+        font-weight: 600;
+    }
+    
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+    }
+    
+    .breadcrumb-item + .breadcrumb-item::before {
+        content: ">";
+    }
+
+    /* Gallery Styles */
+    .thumbnail-item {
+        cursor: pointer;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .thumbnail-item:hover {
+        border-color: #0d6efd;
+        transform: scale(1.05);
+    }
+    
+    .thumbnail-item.active {
+        border-color: #0d6efd;
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+    }
+    
+    .thumbnail-video {
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(45deg, #0d6efd, #6610f2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+    }
+    
+    .thumbnail-video i {
+        font-size: 20px;
+    }
+    
+    #mainDisplay {
+        border-radius: 15px 15px 0 0;
+        overflow: hidden;
+    }
+    
+    #mainDisplay video,
+    #mainDisplay img {
+        border-radius: 15px 15px 0 0;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const thumbnailItems = document.querySelectorAll('.thumbnail-item');
+        const mainImage = document.getElementById('mainImage');
+        const mainVideo = document.getElementById('mainVideo');
+        const mainDisplay = document.getElementById('mainDisplay');
+        
+        thumbnailItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all thumbnails
+                thumbnailItems.forEach(thumb => thumb.classList.remove('active'));
+                
+                // Add active class to clicked thumbnail
+                this.classList.add('active');
+                
+                const type = this.dataset.type;
+                const src = this.dataset.src;
+                
+                if (type === 'video') {
+                    if (mainVideo) {
+                        mainVideo.style.display = 'block';
+                        mainVideo.querySelector('source').src = src;
+                        mainVideo.load();
+                        mainVideo.play();
+                    }
+                    if (mainImage) {
+                        mainImage.style.display = 'none';
+                    }
+                } else {
+                    if (mainImage) {
+                        mainImage.style.display = 'block';
+                        mainImage.src = src;
+                    }
+                    if (mainVideo) {
+                        mainVideo.style.display = 'none';
+                        mainVideo.pause();
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+@section Scripts {
+<script>
+function shareProduct(link, name) {
+    if (navigator.share && /Mobi|Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(navigator.userAgent)) {
+        navigator.share({
+            title: name,
+            text: 'Check out this product!',
+            url: link
+        }).catch(() => {});
+    } else {
+        navigator.clipboard.writeText(link).then(function() {
+            showToast('Product link copied!');
+        });
+    }
+}
+function showToast(msg) {
+    let toast = document.createElement('div');
+    toast.innerText = msg;
+    toast.style.position = 'fixed';
+    toast.style.bottom = '30px';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.background = '#28a745';
+    toast.style.color = '#fff';
+    toast.style.padding = '10px 24px';
+    toast.style.borderRadius = '8px';
+    toast.style.zIndex = 9999;
+    toast.style.fontWeight = 'bold';
+    document.body.appendChild(toast);
+    setTimeout(() => { toast.remove(); }, 1800);
+}
+</script>
+} 

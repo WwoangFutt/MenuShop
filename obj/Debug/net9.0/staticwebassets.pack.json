@@ -1,0 +1,345 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\ComTam\\MenuShop\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\MenuShop.bundle.scp.css",
+      "PackagePath": "staticwebassets\\MenuShop.kymcn9gtig.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\avatars\\2f24bb96-5ed7-4781-9c9c-2d0c075934d6.jpg",
+      "PackagePath": "staticwebassets\\uploads\\avatars\\2f24bb96-5ed7-4781-9c9c-2d0c075934d6.jpg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\avatars\\5fe6dc86-aa90-4f70-a4cb-02eee652f1ac.jpg",
+      "PackagePath": "staticwebassets\\uploads\\avatars\\5fe6dc86-aa90-4f70-a4cb-02eee652f1ac.jpg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\categories\\5be20b8c-b36a-46f2-b1d8-1e013cb85612_panel_13Strore.jpg",
+      "PackagePath": "staticwebassets\\uploads\\categories\\5be20b8c-b36a-46f2-b1d8-1e013cb85612_panel_13Strore.jpg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\2ba62099-335e-461e-b637-e022fc91a4dd_IMG_0089.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\2ba62099-335e-461e-b637-e022fc91a4dd_IMG_0089.jpeg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\55c57688-3afa-4a00-9ebd-505ed246fa43_IMG_0212.mov",
+      "PackagePath": "staticwebassets\\uploads\\products\\55c57688-3afa-4a00-9ebd-505ed246fa43_IMG_0212.mov"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\71c5ba68-16e9-497c-9c68-c370ff3da5c9_IMG_0088.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\71c5ba68-16e9-497c-9c68-c370ff3da5c9_IMG_0088.jpeg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\89eaed85-b09b-46c3-b313-cd00d2e6fb83_IMG_0027.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\89eaed85-b09b-46c3-b313-cd00d2e6fb83_IMG_0027.jpeg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\a24d53d6-d53c-499a-8c85-beaf0fa49ea1_IMG_0090.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\a24d53d6-d53c-499a-8c85-beaf0fa49ea1_IMG_0090.jpeg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\bdb11dc5-d911-4fb1-a32e-5f301ca09eba_IMG_0092.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\bdb11dc5-d911-4fb1-a32e-5f301ca09eba_IMG_0092.jpeg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\c7ca6ba9-e4f5-4830-8f20-20fefaabd0e8_IMG_0097.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\c7ca6ba9-e4f5-4830-8f20-20fefaabd0e8_IMG_0097.jpeg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\ca0ee9f2-170f-4eb8-9fc0-6cf690543183_IMG_0091.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\products\\ca0ee9f2-170f-4eb8-9fc0-6cf690543183_IMG_0091.jpeg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\ca4d3214-0313-450d-b973-17defa61ea45_cau1.png",
+      "PackagePath": "staticwebassets\\uploads\\products\\ca4d3214-0313-450d-b973-17defa61ea45_cau1.png"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\ce3a3f8a-66e2-4831-816b-d89b07cd7441_IMG_0093.png",
+      "PackagePath": "staticwebassets\\uploads\\products\\ce3a3f8a-66e2-4831-816b-d89b07cd7441_IMG_0093.png"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\d3ee13a9-0094-4190-b53e-9f0d924d5f84_classroom.jpg",
+      "PackagePath": "staticwebassets\\uploads\\products\\d3ee13a9-0094-4190-b53e-9f0d924d5f84_classroom.jpg"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\e45e7f72-87bf-4871-86cb-685623b78bce_IMG_9973.mov",
+      "PackagePath": "staticwebassets\\uploads\\products\\e45e7f72-87bf-4871-86cb-685623b78bce_IMG_9973.mov"
+    },
+    {
+      "Id": "D:\\ComTam\\MenuShop\\wwwroot\\uploads\\products\\f4b69312-5360-4e8d-bb70-0e9a3179e5f2_IMG_0212.mov",
+      "PackagePath": "staticwebassets\\uploads\\products\\f4b69312-5360-4e8d-bb70-0e9a3179e5f2_IMG_0212.mov"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.MenuShop.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.MenuShop.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.MenuShop.props",
+      "PackagePath": "build\\MenuShop.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.MenuShop.props",
+      "PackagePath": "buildMultiTargeting\\MenuShop.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.MenuShop.props",
+      "PackagePath": "buildTransitive\\MenuShop.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

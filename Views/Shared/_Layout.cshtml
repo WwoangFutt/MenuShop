@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MenuShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MenuShop.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    @{
+        var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
+    }
+    <!-- Topbar với nút hamburger luôn hiển thị ở trên cùng bên trái -->
+    <div class="main-topbar d-flex align-items-center">
+        <button class="sidebar-toggle-btn" id="sidebarToggle" type="button" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        @if (controller == "Home")
+        {
+            @await Html.PartialAsync("~/Views/Home/_SearchFormPartial.cshtml")
+        }
+        <div class="flex-grow-1"></div>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-top text-center">
+            <div class="sidebar-avatar-wrapper">
+                @if (string.IsNullOrEmpty(User.FindFirst("Avatar")?.Value))
+                {
+                    <div class="sidebar-avatar bg-primary text-white">
+                        <i class="fas fa-user"></i>
+                    </div>
+                }
+                else
+                {
+                    <img src="/uploads/avatars/@User.FindFirst("Avatar")?.Value" alt="Avatar" class="sidebar-avatar" />
+                }
+            </div>
+            <div class="sidebar-user-info">
+                <div class="sidebar-user-name">@User.FindFirst("FullName")?.Value</div>
+                <div class="sidebar-user-role">@(User.FindFirst("IsAdmin")?.Value == "True" ? "Admin" : "User")</div>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="@Url.Action("Index", "Home")" class="sidebar-item @(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" && ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            @if (ViewBag.Categories != null)
+            {
+                <div class="sidebar-divider"></div>
+                <div class="sidebar-title">
+                    <span>Category</span>
+                </div>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <a href="@Url.Action("Category", "Home", new { id = category.Id })" class="sidebar-item sidebar-subitem @(ViewContext.RouteData.Values["Action"]?.ToString() == "Category" && ViewContext.RouteData.Values["id"]?.ToString() == category.Id.ToString() ? "active" : "")">
+                        <i class="fas fa-tag"></i>
+                        <span>@category.Name</span>
+                    </a>
+                }
+            }
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <div class="sidebar-divider"></div>
+                <a href="@Url.Action("Profile", "Account")" class="sidebar-item @(ViewContext.RouteData.Values["Action"]?.ToString() == "Profile" ? "active" : "")">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Profile</span>
+                </a>
+                @if (User.FindFirst("IsAdmin")?.Value == "True")
+                {
+                    <a href="@Url.Action("Products", "Admin")" class="sidebar-item @(ViewContext.RouteData.Values["Action"]?.ToString() == "Products" ? "active" : "")">
+                        <i class="fas fa-box"></i>
+                        <span>Product</span>
+                    </a>
+                    <a href="@Url.Action("Categories", "Admin")" class="sidebar-item @(ViewContext.RouteData.Values["Action"]?.ToString() == "Categories" ? "active" : "")">
+                        <i class="fas fa-tags"></i>
+                        <span>Categories</span>
+                    </a>
+                }
+                <div class="sidebar-divider"></div>
+                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                    <button type="submit" class="sidebar-item w-100 text-start border-0 bg-transparent">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
+            }
+            else
+            {
+                <div class="sidebar-divider"></div>
+                <a href="@Url.Action("Login", "Account")" class="sidebar-item @(ViewContext.RouteData.Values["Action"]?.ToString() == "Login" ? "active" : "")">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            }
+        </div>
+        <div class="sidebar-bottom">
+            <a href="#" class="sidebar-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="fas fa-comment-dots"></i>
+                <span>SendFeedback</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        @RenderBody()
+    </div>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-box me-2"></i>MenuShop</h5>
+                    <p class="mb-0">Menu and Product Management System</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 - MenuShop. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

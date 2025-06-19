@@ -1,0 +1,413 @@
+@model MenuShop.Models.Product
+@{
+    ViewData["Title"] = "Create New Product";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-plus me-2"></i>Create New Product
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="@Url.Action("CreateProduct", "Admin")" enctype="multipart/form-data" id="createProductForm">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label asp-for="Name" class="form-label">
+                                                <i class="fas fa-box me-1"></i>Product Name <span class="text-danger">*</span>
+                                            </label>
+                                            <input asp-for="Name" class="form-control" placeholder="Enter product name">
+                                            <span asp-validation-for="Name" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label asp-for="CategoryId" class="form-label">
+                                                <i class="fas fa-tag me-1"></i>Category <span class="text-danger">*</span>
+                                            </label>
+                                            <select asp-for="CategoryId" class="form-select">
+                                                <option value="">Select category</option>
+                                                @if (ViewBag.Categories != null)
+                                                {
+                                                    foreach (var category in ViewBag.Categories)
+                                                    {
+                                                        <option value="@category.Id">@category.Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Description" class="form-label">
+                                        <i class="fas fa-info-circle me-1"></i>Description
+                                    </label>
+                                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter product description"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label asp-for="Price" class="form-label">
+                                                <i class="fas fa-dollar-sign me-1"></i>Price <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input asp-for="Price" class="form-control" type="number" step="0.01" placeholder="0">
+                                                <span class="input-group-text">₫</span>
+                                            </div>
+                                            <span asp-validation-for="Price" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label asp-for="Stock" class="form-label">
+                                                <i class="fas fa-boxes me-1"></i>Stock
+                                            </label>
+                                            <input asp-for="Stock" class="form-control" type="number" placeholder="0">
+                                            <span asp-validation-for="Stock" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Section Giảm giá -->
+                                <div class="mb-3">
+                                    <h6 class="form-label">
+                                        <i class="fas fa-percentage me-1"></i>Discount
+                                    </h6>
+                                    <div class="border rounded p-3">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label asp-for="DiscountPercent" class="form-label">
+                                                        <i class="fas fa-percent me-1"></i>Discount Percent
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input asp-for="DiscountPercent" class="form-control" type="number" step="0.1" min="0" max="100" placeholder="0">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
+                                                    <span asp-validation-for="DiscountPercent" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label asp-for="DiscountStartDate" class="form-label">
+                                                        <i class="fas fa-calendar-plus me-1"></i>Start Date
+                                                    </label>
+                                                    <input asp-for="DiscountStartDate" class="form-control" type="datetime-local">
+                                                    <span asp-validation-for="DiscountStartDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label asp-for="DiscountEndDate" class="form-label">
+                                                        <i class="fas fa-calendar-minus me-1"></i>End Date
+                                                    </label>
+                                                    <input asp-for="DiscountEndDate" class="form-control" type="datetime-local">
+                                                    <span asp-validation-for="DiscountEndDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <small class="text-muted">
+                                            <i class="fas fa-info-circle me-1"></i>
+                                            Leave start/end date empty for permanent discount
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input asp-for="IsActive" class="form-check-input" type="checkbox">
+                                        <label asp-for="IsActive" class="form-check-label">
+                                            <i class="fas fa-toggle-on me-1"></i>Activate product
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-images me-1"></i>Product Images (max 5 images)
+                                    </label>
+                                    <div class="border rounded p-3">
+                                        <div class="row" id="imageGrid">
+                                            <!-- 5 ô vuông để upload ảnh -->
+                                            <div class="col-md-6 col-6 mb-2">
+                                                <div class="image-upload-box" data-index="0">
+                                                    <div class="upload-placeholder">
+                                                        <i class="fas fa-plus fa-2x text-muted"></i>
+                                                        <small class="text-muted d-block mt-2">Add image 1</small>
+                                                    </div>
+                                                    <img class="uploaded-image" style="display: none;">
+                                                    <input type="file" name="imageFile0" class="image-input" accept="image/*" style="display: none;">
+                                                    <button type="button" class="btn btn-sm btn-danger remove-image" style="display: none;">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6 mb-2">
+                                                <div class="image-upload-box" data-index="1">
+                                                    <div class="upload-placeholder">
+                                                        <i class="fas fa-plus fa-2x text-muted"></i>
+                                                        <small class="text-muted d-block mt-2">Add image 2</small>
+                                                    </div>
+                                                    <img class="uploaded-image" style="display: none;">
+                                                    <input type="file" name="imageFile1" class="image-input" accept="image/*" style="display: none;">
+                                                    <button type="button" class="btn btn-sm btn-danger remove-image" style="display: none;">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6 mb-2">
+                                                <div class="image-upload-box" data-index="2">
+                                                    <div class="upload-placeholder">
+                                                        <i class="fas fa-plus fa-2x text-muted"></i>
+                                                        <small class="text-muted d-block mt-2">Add image 3</small>
+                                                    </div>
+                                                    <img class="uploaded-image" style="display: none;">
+                                                    <input type="file" name="imageFile2" class="image-input" accept="image/*" style="display: none;">
+                                                    <button type="button" class="btn btn-sm btn-danger remove-image" style="display: none;">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6 mb-2">
+                                                <div class="image-upload-box" data-index="3">
+                                                    <div class="upload-placeholder">
+                                                        <i class="fas fa-plus fa-2x text-muted"></i>
+                                                        <small class="text-muted d-block mt-2">Add image 4</small>
+                                                    </div>
+                                                    <img class="uploaded-image" style="display: none;">
+                                                    <input type="file" name="imageFile3" class="image-input" accept="image/*" style="display: none;">
+                                                    <button type="button" class="btn btn-sm btn-danger remove-image" style="display: none;">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6 mb-2">
+                                                <div class="image-upload-box" data-index="4">
+                                                    <div class="upload-placeholder">
+                                                        <i class="fas fa-plus fa-2x text-muted"></i>
+                                                        <small class="text-muted d-block mt-2">Add image 5</small>
+                                                    </div>
+                                                    <img class="uploaded-image" style="display: none;">
+                                                    <input type="file" name="imageFile4" class="image-input" accept="image/*" style="display: none;">
+                                                    <button type="button" class="btn btn-sm btn-danger remove-image" style="display: none;">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <small class="text-muted">Click the box to select image</small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        <i class="fas fa-video me-1"></i>Product Video
+                                    </label>
+                                    <div class="border rounded p-3 text-center" style="min-height: 200px;">
+                                        <div id="videoPreview" class="mb-3" style="display: none;">
+                                            <video id="previewVideo" class="img-fluid rounded" controls style="max-height: 150px;">
+                                                <source id="videoSource" src="" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <div id="videoPlaceholder">
+                                            <i class="fas fa-video fa-3x text-muted mb-3"></i>
+                                            <p class="text-muted mb-0">No video</p>
+                                        </div>
+                                        <input type="file" name="videoFile" id="videoFile" class="form-control mt-3" accept="video/*">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Save Product
+                            </button>
+                            <a href="@Url.Action("Products", "Admin")" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // Simple form submit debug
+        document.getElementById('createProductForm').addEventListener('submit', function(e) {
+            console.log('=== CREATE PRODUCT FORM SUBMIT ===');
+            console.log('Form submitted successfully');
+            
+            // Check required fields
+            const name = document.querySelector('input[name="Name"]').value;
+            const categoryId = document.querySelector('select[name="CategoryId"]').value;
+            const price = document.querySelector('input[name="Price"]').value;
+            
+            console.log('Name:', name);
+            console.log('CategoryId:', categoryId);
+            console.log('Price:', price);
+            
+            if (!name || !categoryId || !price) {
+                console.log('ERROR: Missing required fields');
+                e.preventDefault();
+                return false;
+            }
+            
+            console.log('All required fields are filled');
+        });
+
+        // Image upload boxes functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageBoxes = document.querySelectorAll('.image-upload-box');
+            
+            imageBoxes.forEach(box => {
+                const placeholder = box.querySelector('.upload-placeholder');
+                const image = box.querySelector('.uploaded-image');
+                const input = box.querySelector('.image-input');
+                const removeBtn = box.querySelector('.remove-image');
+                
+                // Click to select image
+                placeholder.addEventListener('click', () => {
+                    input.click();
+                });
+                
+                // Handle file selection
+                input.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            image.src = e.target.result;
+                            image.style.display = 'block';
+                            placeholder.style.display = 'none';
+                            removeBtn.style.display = 'block';
+                        }
+                        reader.readAsDataURL(file);
+                    }
+                });
+                
+                // Remove image
+                removeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    image.style.display = 'none';
+                    placeholder.style.display = 'block';
+                    removeBtn.style.display = 'none';
+                    input.value = '';
+                });
+            });
+        });
+
+        // Video preview
+        document.getElementById('videoFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('videoPreview');
+            const placeholder = document.getElementById('videoPlaceholder');
+            const previewVideo = document.getElementById('previewVideo');
+            const videoSource = document.getElementById('videoSource');
+
+            if (file) {
+                const url = URL.createObjectURL(file);
+                videoSource.src = url;
+                previewVideo.load();
+                preview.style.display = 'block';
+                placeholder.style.display = 'none';
+            } else {
+                preview.style.display = 'none';
+                placeholder.style.display = 'block';
+            }
+        });
+    </script>
+}
+
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .card-header {
+        border-radius: 15px 15px 0 0 !important;
+    }
+    
+    .form-control, .form-select {
+        border-radius: 8px;
+        border: 2px solid #e9ecef;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .btn {
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    
+    .form-check-input:checked {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .image-upload-box {
+        width: 100%;
+        height: 120px;
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
+    }
+    
+    .image-upload-box:hover {
+        border-color: #0d6efd;
+        background-color: #f0f8ff;
+    }
+    
+    .upload-placeholder {
+        text-align: center;
+        color: #6c757d;
+    }
+    
+    .uploaded-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+    
+    .remove-image {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        z-index: 10;
+    }
+</style> 
