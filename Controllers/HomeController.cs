@@ -5,8 +5,8 @@ using MenuShop.Models;
 
 namespace MenuShop.Controllers
 {
-    public class HomeController : Controller
-    {
+public class HomeController : Controller
+{
         private readonly ApplicationDbContext _context;
 
         public HomeController(ApplicationDbContext context)
@@ -27,7 +27,7 @@ namespace MenuShop.Controllers
             }
 
             if (categoryId.HasValue)
-            {
+    {
                 query = query.Where(p => p.CategoryId == categoryId.Value);
             }
 
@@ -37,7 +37,7 @@ namespace MenuShop.Controllers
             ViewBag.SelectedCategoryId = categoryId;
 
             return View(products);
-        }
+    }
 
         public async Task<IActionResult> ProductDetail(int id)
         {
@@ -47,12 +47,12 @@ namespace MenuShop.Controllers
                 .FirstOrDefaultAsync(p => p.Id == id && p.IsActive);
 
             if (product == null)
-            {
+    {
                 return NotFound();
             }
 
             return View(product);
-        }
+    }
 
         public async Task<IActionResult> Category(int id)
         {
@@ -62,16 +62,16 @@ namespace MenuShop.Controllers
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             if (category == null)
-            {
+    {
                 return NotFound();
             }
 
             return View(category);
-        }
+    }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
             return View();
         }
 
